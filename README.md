@@ -59,7 +59,9 @@ OpenAI's GPT3.5 was finetuned to teach Math.
 
 There are close to 1300 multiplication instructions created for training and 200 for validation. The test cases were generated keeping in mind the OpenAI Gpt3.5 4096 token limit. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if 1 number is 6 digit, the other can be <= 4 digit and similarly if 1 number is 7 digit then the other can be <= 3 digit. 
 
-Also instead of giving ```* for multiplication and + for addition```, different operators' ```<<*>>``` and ```<<<+>>>``` are given. The rationale behind this is, using the existing * and + for multiplication and addition might tap on the existing weights of the neural network which doesn't follow step by step instruction and directly give the result for multiplication in 1 single step
+Also instead of giving ```* for multiplication and + for addition```, different operators' ```<<*>>``` and ```<<<+>>>``` are given. The rationale behind this is, using the existing * and + for multiplication and addition might tap on the existing weights of the neural network which doesn't follow step by step instruction and directly give the result for multiplication in 1 single step. 
+
+[Sample Instruction would look something like this](https://pastebin.com/VZNUHQVQ)
 
 **What is the overall training and validation loss when training (finetuning) the model?**
 
