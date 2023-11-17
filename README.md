@@ -105,15 +105,13 @@ A. As [Greg Brockman has mentioned during his TED Talk](https://www.linkedin.com
 
 ## 7. Files in the Project
 
-```
-training_set.jsonl -> Training Dataset
-validation_set.jsonl -> Validation Dataset
-math_outputs.csv -> Final outputs for test Dataset
-Math_using_LLM(2).ipynb -> Contains the Code
-```
+* training_set.jsonl - Training Dataset
+* validation_set.jsonl - Validation Dataset
+* math_outputs.csv - Final outputs for test Dataset
+* Math_using_LLM(2).ipynb - Contains the Code for Synthetic Data generation, Finetuning, Benchmarking for test results
 
 ## 8. Training Cost
 $200 was spend for finetuning
 
 ## 8. License
-MIT-LICENSE.txt
+MIT-LICENSE
