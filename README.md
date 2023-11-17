@@ -112,5 +112,8 @@ math_outputs.csv -> Final outputs for test Dataset
 Math_using_LLM(2).ipynb -> Contains the Code
 ```
 
+## 8. Training Cost
+$200 was spend for finetuning
+
 ## 8. License
 MIT-LICENSE.txt
