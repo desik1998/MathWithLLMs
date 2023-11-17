@@ -1,10 +1,22 @@
 # MathWithLLMs
 
-This project aims to prove that LLMs can learn math when trained on a step by step procedural way similar to how humans do it. For now, I've done multiplication operation to illustrate how LLMs can learn multiplication when done in a step by step procedure. For example, instead of teaching LLMs multiplication like ```23 * 34 = 782```, we teach it mutliplication similar to how human does using a digit wise multiplication, get values for each digit multiplication and further add the resulting numbers to get the final result.
+## Motivation
+The current data on the internet for multiplication is like ```a * b = c```. For example if a software engineer wants to mention the number of hours spent coding during their work time, they would do it like ```TotalNumberofWorkDays * Avg Time Spent Each Day Coding``` = ```227 * 4 = 908```. But when humans are asked to calculate ```227 * 4```, we would either use a calculator or we would use the digit wise multiplication using carry method. But when writing this number on the internet, we don't write down the whole carry based process to multiply the 2 numbers and instead just write down the correct value. The rationale why we do this is because the reader is simply not interested in the whole process and is interested in the final value itself. So now given the Data on the internet for math is not procedural or step by step based, LLMs have to reverse engineer the algorithm for math based operators. And due to this reason, LLMs in general (including the state of the art are not good at Math). Now given we humans ourselves are doing math using procedural way, not reverse engineer it, why should we except LLMs to reverse engineer the algo for math based operators.  
+
+## Related work
+* [GPT can do Math without calculators](https://arxiv.org/pdf/2309.03241v2.pdf): This paper is from Tsinghua University. The researchers have trained an LLM from scratch to do only Math. They've given 50M instructions to do Math.
+  * Flaws with this paper:
+    * Humans don't require 50M instructions to do Math
+    * Training an LLM just to do math is incorrect because the concept of LLMs is to create a system which can excel in multiple tasks
+* [WizardLM](https://arxiv.org/pdf/2308.09583.pdf): Applied Reinforcement Learning based techniques to do math
+* [Goat: Fine-tuned LLaMA Outperforms GPT-4 on Arithmetic Tasks](https://arxiv.org/pdf/2305.14201.pdf): Follows similar approach to the below project but still doesn't do a complete step by step procedure to perform Math
+
+## What this project does?
+This project aims to prove that LLMs can learn math when trained on a step by step procedural way similar to how humans do it. And it also breaks the notion that LLMs cannot do Math without using Calculators. For now to illustrate this, this project is restricted itself to only multiplication operation proving how LLMs can learn multiplication when done in a step by step procedure. For example, instead of teaching LLMs multiplication like ```23 * 34 = 782```, we teach it mutliplication similar to how humans' does using a digit wise multiplication, get values for each digit multiplication and further add the resulting numbers to get the final result. 
 
 **1. Illustration:**
 
-**1.1 Human multiplication:**
+**1.1 How Humans do multiplication:**
 <pre>
   23
 x 34
@@ -16,7 +28,7 @@ _____
 </pre>
 
 
-**1.2 On a Programatical Note:**
+**1.2 How Dataset was fed to LLM as part of this project:**
   ```
   23 x 34
   = 23 x (4 + 30)
@@ -41,18 +53,15 @@ _____
     - Overall Number = 782
    ```
 
-Why aren't today's state of the art models able to do multiplication?
-Instructions on the internet are .......
-
 ## 2. Results
 
-The benchmarking was done on 200 test cases where each test case has 2 random numbers generated. These 200 test cases were generated keeping in mind the OpenAI Gpt3.5 4096 token limit in mind. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if 1 number is 6 digit, the other can be 4 digit or less and similarly if 1 number is 7 digit then the other can be <= 3 digit. For the 200 samples which were tested, excluding for 3 cases, the rest of the cases the multiplication is correct. **Which means this overall accuracy is 98.5%**. 
+The benchmarking was done on 200 test cases where each test case has 2 random numbers generated. These 200 test cases were generated keeping in mind the OpenAI Gpt3.5 4096 token limit in mind. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if 1 number is 6 digit, the other can be 4 digit or less and similarly if 1 number is 7 digit then the other can be <= 3 digit. For the 200 samples which were tested, excluding for 3 cases, the rest of the cases the multiplication is correct. **Which means this overall accuracy is 98.5%**. (We're also looking for feedback from community about how to better test)
 
 **What is the overall training and validation loss when training (finetuning) the model?**
 
 The training loss and validation loss reach near 0 within 100 steps (0.1 epochs) using the gpt3.5-turbo Model. This means that the model is able to follow and understand the procedure. 
 
-![Training and validation loss](https://github.com/desik1998/MathWithLLMs/blob/main/Math%20Training%20and%20Validation%20Loss.png)
+![Training and validation loss](Training_and_Validation_Loss.png)
 
 
 ### 3. Questions
@@ -67,7 +76,7 @@ A. This project is just to prove that LLMs can do Math when taught in a procedur
 
 3.3 How is finetuning Dataset generated?
 
-A. The test cases were generated keeping in mind the OpenAI Gpt3.5 4096 token limit in mind. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if 1 number is 6 digit, the other can be <= 4 digit and similarly if 1 number is 7 digit then the other can be <= 3 digit
+A. The test cases were generated keeping in mind the OpenAI Gpt3.5 4096 token limit in mind. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if 1 number is 6 digit, the other can be <= 4 digit and similarly if 1 number is 7 digit then the other can be <= 3 digit. There are close to 1300 multiplication instructions created for training and 200 for validation. Although the training/validation set contains all the different digit multiplication possibilities within 4096 Limit, more preference is given to larger digits 
 
 3.4 What can be done better?
 
@@ -86,3 +95,5 @@ A. Not sure. But my intution is, it's even difficult for a human to do so when n
 3.7 Will scaling the state of the art models further help it in reverse engineering the math algo's?
 
 A. As [Greg Brockman has mentioned during his TED Talk](https://www.linkedin.com/posts/seeall_chatgpt-gpt-gpt4-activity-7054916094439866368-SjgR/), Gpt4 is coming up with an Internal Representation to add 2 40 digit numbers. Similarly, maybe Scaling the current 1T Parameter Models to further might help the model to figure out the multiplication algo when only trained on ```a * b = c``` based examples.
+
+
