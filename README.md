@@ -102,3 +102,12 @@ A. Not sure. But my intution is, it's even difficult for a human to do so when n
 **6.7 Will scaling the state of the art models further help it in reverse engineering the math algo's?**
 
 A. As [Greg Brockman has mentioned during his TED Talk](https://www.linkedin.com/posts/seeall_chatgpt-gpt-gpt4-activity-7054916094439866368-SjgR/), Gpt4 is coming up with an Internal Representation to add 2 40 digit numbers. Similarly, maybe Scaling the current 1T Parameter Models to further might help the model to figure out the multiplication algo when only trained on ```a * b = c``` based examples.
+
+## 7. Files in the Project
+
+```
+training_set.jsonl -> Training Dataset
+validation_set.jsonl -> Validation Dataset
+math_outputs.csv -> Final outputs for test Dataset
+Math_using_LLM(2).ipynb -> Contains the Code
+```
