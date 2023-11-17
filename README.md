@@ -73,32 +73,32 @@ The benchmarking was done on 200 test cases where each test case has 2 random nu
 
 ## 6. Questions
 
-6.1 Why is Finetuning done and why wouldn't few shot prompting work?
+**6.1 Why is Finetuning done and why wouldn't few shot prompting work?**
 
 A. When initially [tested using incontext learning for Gpt4, the model was able to follow the procedure showed in the 1shot prompting but it was sometimes failing with the overall result due to OpenAI's addition technique](https://chat.openai.com/share/4633c517-edad-420d-8689-36f5c4393557). And given this is a procedural technique, doing a n-shot prompting would lead to even more tokens. Given these limitations, it was evident that finetuning would solve these issue. And also the model was able to quickly learn the procedure and the overall training and validation loss of model went close to 0 within 0.1 epochs
 
-6.2 Why is OpenAI's API used and not an OpenSource LLM?
+**6.2 Why is OpenAI's API used and not an OpenSource LLM?**
 
 A. This project is just to prove that LLMs can do Math when taught in a procedural way. And given this is just for proof purposes, proving with the state of the art model would be easier
 
-6.3 How is finetuning Dataset generated?
+**6.3 How is finetuning Dataset generated?**
 
 A. The test cases were generated keeping in mind the OpenAI Gpt3.5 4096 token limit in mind. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if 1 number is 6 digit, the other can be <= 4 digit and similarly if 1 number is 7 digit then the other can be <= 3 digit. There are close to 1300 multiplication instructions created for training and 200 for validation. Although the training/validation set contains all the different digit multiplication possibilities within 4096 Limit, more preference is given to larger digits 
 
-6.4 What can be done better?
+**6.4 What can be done better?**
 
 A. Find a way to simplify the data instruction size so that token size can be reduced. This simplification has to be done such that overall accuracy of the model is not reduced much
 
-6.5 What are the next steps?
+**6.5 What are the next steps?**
 
 - Reach out to AI and open source community to make this proposal better or identify any flaws
 - Do the same process of finetuning using Open Source LLMs
 - **Figure out what's the smallest LLM that can do Math accurately when trained in a procedural manner (A 10 year kid can do Math)**. Check this for both normal models and distilled models as well
 
-6.6 Why aren't today's state of the models able to reverse engineer the multiplication algo?
+**6.6 Why aren't today's state of the models able to reverse engineer the multiplication algo?**
 
 A. Not sure. But my intution is, it's even difficult for a human to do so when not taught in a procedural way. Consider a scenario where a person is not taught multiplication using procedure but just using ```a * b = c```. Just using a bunch of examples, figuring out that the algo is ```digit wise multiplication using carry and further adding up the resulting numbers``` is very difficult for a human. 
 
-6.7 Will scaling the state of the art models further help it in reverse engineering the math algo's?
+**6.7 Will scaling the state of the art models further help it in reverse engineering the math algo's?**
 
 A. As [Greg Brockman has mentioned during his TED Talk](https://www.linkedin.com/posts/seeall_chatgpt-gpt-gpt4-activity-7054916094439866368-SjgR/), Gpt4 is coming up with an Internal Representation to add 2 40 digit numbers. Similarly, maybe Scaling the current 1T Parameter Models to further might help the model to figure out the multiplication algo when only trained on ```a * b = c``` based examples.
