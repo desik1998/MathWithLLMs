@@ -111,3 +111,6 @@ validation_set.jsonl -> Validation Dataset
 math_outputs.csv -> Final outputs for test Dataset
 Math_using_LLM(2).ipynb -> Contains the Code
 ```
+
+## 8. License
+MIT-LICENSE.txt
