@@ -59,9 +59,9 @@ _____
 
 OpenAI's GPT-3.5 was finetuned to teach Math. 
 
-There are close to 1300 multiplication instructions created for training and 200 for validation. The test cases were generated keeping in mind the OpenAI GPT-3.5 4096 token limit. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if one number is 6 digit, the other can be <= 4 digit and similarly if 1 number is 7 digit then the other can be <= 3 digit. 
+There are close to 1300 multiplication instructions created for training and 200 for validation. The test cases were generated keeping in mind the OpenAI GPT-3.5 4096 token limit. A 5\*5 digit multiplication can in general fit within 4096 limit but 6\*6 cannot fit. But if one number is 6 digit, the other can be <= 4 digit and similarly if 1 number is 7 digit then the other can be <= 3 digit. 
 
-Also instead of giving ```* for multiplication and + for addition```, different operators' ```<<*>>``` and ```<<<+>>>``` are given. The rationale behind this is, using the existing * and + for multiplication and addition might tap on the existing weights of the neural network which doesn't follow step-by-step instruction and directly give the result for multiplication in one single step. 
+Also instead of giving ```* for multiplication and + for addition```, different operators' ```<<*>>``` and ```<<<+>>>``` are given. The rationale behind this is, using the existing \* and + for multiplication and addition might tap on the existing weights of the neural network which doesn't follow step-by-step instruction and directly give the result for multiplication in one single step. 
 
 [Sample Instruction would look something like this](https://pastebin.com/VZNUHQVQ)
 
@@ -87,7 +87,7 @@ A. This project is just to prove that LLMs can do Math when taught in a procedur
 
 **6.3 How is finetuning Dataset generated?**
 
-A. The test cases were generated keeping in mind the OpenAI GPT-3.5 4096 token limit in mind. A 5*5 digit multiplication can in general fit within 4096 limit but 6*6 cannot fit. But if one number is 6 digit, the other can be <= 4 digit and similarly if one number is 7 digit then the other can be <= 3 digit. There are close to 1300 multiplication instructions created for training and 200 for validation. Although the training/validation set contains all the different digit multiplication possibilities within 4096 Limit, more preference is given to larger digits.
+A. The test cases were generated keeping in mind the OpenAI GPT-3.5 4096 token limit in mind. A 5\*5 digit multiplication can in general fit within 4096 limit but 6\*6 cannot fit. But if one number is 6 digit, the other can be <= 4 digit and similarly if one number is 7 digit then the other can be <= 3 digit. There are close to 1300 multiplication instructions created for training and 200 for validation. Although the training/validation set contains all the different digit multiplication possibilities within 4096 Limit, more preference is given to larger digits.
 
 **6.4 What can be done better?**
 
